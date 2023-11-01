@@ -1,0 +1,13 @@
+before_script:
+  - 'which ssh-agent || ( apt update -y && apt install openssh-client -y )'
+  - eval $(ssh-agent -s)
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+deploy:
+  environment:
+    name: development
+  script:
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - ssh -o StrictHostKeyChecking=no root@"$SERVER" 'cd /www/wwwroot/fe/flyhigher_dev/reactjs_dev && git status && git pull git@gitlab.com:Higher_id/frontend/reactjs_dev.git development && npm i'
+    

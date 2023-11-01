@@ -1,0 +1,110 @@
+:root,
+html {
+  padding: 0 !important;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2a2a2a #3f4242;
+}
+
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 4px;
+  background-color: #3f4242;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: #3f4242;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: #3f4242;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 12px;
+  background-color: #2a2a2a;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #2c2c2b;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: #2c2c2b;
+}
+
+.bg-black {
+  background-color: black;
+}
+
+.text-white {
+  color: white;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.mr-1 {
+  margin-right: 0.25rem;
+}
+
+.no-underline {
+  text-decoration-line: none;
+}
+
+.bg-primary {
+  background-color: rgb(45 212 191);
+}
+
+.text-primary {
+  color: rgb(45 212 191);
+}
+
+.MuiSelect-icon {
+  fill: white;
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+/* .MuiPaper-root {
+  background-color: #090808;
+  color: white;
+  border-radius: 8px;
+  margin-left: 12px;
+}
+*/
+
+.css-sd3uuj-MuiInputBase-input-MuiOutlinedInput-input {
+  color: white !important;
+}
+
+.MuiMenuItem-root:hover {
+  background-color: #007bff;
+}
+
+.MuiTabs-indicator {
+  background-color: white !important;
+}
+
+.css-1vooibu-MuiSvgIcon-root {
+  color: #fff;
+}
+
+.css-1k691y1-MuiPaper-root-MuiDrawer-paper {
+  background-color: black;
+}
