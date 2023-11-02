@@ -223,7 +223,7 @@ export default function Jastip() {
 
         <main className={`${styles.main} ${inter.className}`}>
           <ButtonCategoryService />
-          <section>
+          <section> 
             <ListSection>
               <ListSection.Header>
                 <Box
@@ -477,6 +477,12 @@ export default function Jastip() {
               </ListSection.Products>
             </ListSection>
           </section>
+
+          {/* Editing Page */}
+
+          <div>Test</div>
+
+          {/* End Editing Page */}
 
           <ModalCategories
             options={listCategoriesJastip}
