@@ -138,36 +138,38 @@ const index = () => {
               width: "100%",
             }}
           >
-            <div
-              style={{
-                width: "150px",
-                height: "150px",
+            <Box
+              sx={{
+                width: {xs: "100px", md: "120px",lg: "150px"},
+                height: {xs: "100px", md: "120px", lg:"150px"},
                 border: "1px solid #ccc",
                 borderRadius: "10%",
                 overflow: "hidden",
+                position: "relative"
               }}
             >
               <Image
                 src={"/banana.jpeg"}
-                width={50}
-                height={50}
+                fill={true}
                 alt="logoIcon"
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
               />
-            </div>
+            </Box>
             <Box
               sx={{
-                px: "20px",
+                px: {xs: "10px" ,lg:"20px"},
               }}
             >
               <Button
                 startIcon={<EditIcon />}
                 sx={{
-                  width: "270px",
-                  height: "35px",
-                  fontSize: "15px",
+
+                  minWidth: "175px",
+
+                  minHeight: "20px",
                   backgroundColor: "#33c12a",
                   color: "white",
+                  fontSize: {xs:"10px", lg:"15px"}
                 }}
               >
                 Edit Your Profile
@@ -175,7 +177,8 @@ const index = () => {
               <Typography
                 sx={{
                   color: "#5c6166",
-                  marginTop: "17px",
+                  marginTop: {xs: "8px",md: "12px" ,lg: "17px"},
+                  fontSize: { xs: "10px", md: "15px", lg: "17px" } 
                 }}
               >
                 {/* REVISI BINTANG */}
@@ -184,7 +187,8 @@ const index = () => {
               <Typography
                 sx={{
                   color: "#5c6166",
-                  marginTop: "10px",
+                  marginop: {xs: "2px",md: "5px" ,lg: "10px"},
+                  fontSize: { xs: "10px", md: "15px", lg: "17px" } 
                 }}
               >
                 Response Time = 3 minutes ago
@@ -192,7 +196,8 @@ const index = () => {
               <Typography
                 sx={{
                   color: "#5c6166",
-                  marginTop: "20px",
+                  marginTop: {xs: "10px",md: "15px" ,lg: "20px"},
+                  fontSize: { xs: "10px", md: "15px", lg: "17px" } 
                 }}
               >
                 Last Transaction = 2 minutes ago
@@ -215,13 +220,15 @@ const index = () => {
           >
             <RateReviewIcon sx={{ height: "32px", margin: "0 8px 0 0" }} />
             <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-              REVIEWS
+              Reviews
             </Typography>
           </Box>
           <Box
             sx={{
               display: "flex",
               flexDirection: "row",
+              overflowX: "auto",
+
             }}
           >
             {/* FIRST REVIEW(AARON) */}
@@ -230,11 +237,12 @@ const index = () => {
               sx={{
                 display: "flex",
                 color: "white",
+                minWidth: "315px",
                 alignItems: "center",
               }}
             >
-              <div
-                style={{
+              <Box
+                sx={{
                   width: "50px",
                   height: "50px",
                   border: "1px solid #ccc",
@@ -249,7 +257,7 @@ const index = () => {
                   alt="logoIcon"
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 />
-              </div>
+              </Box>
               <Box
                 sx={{
                   px: "20px",
@@ -282,7 +290,7 @@ const index = () => {
                         backgroundColor: "#56636c",
                       }}
                     >
-                      <Typography sx={{ color: "white", fontWeight: "bold", fontSize: "13px" }}>
+                      <Typography sx={{ color: "white", fontWeight: "bold",fontSize: { xs: "10px", md: "11px", lg: "13px" } }}>
                         Quality Work
                       </Typography>
                     </Box>
@@ -293,7 +301,7 @@ const index = () => {
                         backgroundColor: "#56636c",
                       }}
                     >
-                      <Typography sx={{ color: "white", fontWeight: "bold", fontSize: "13px"  }}>
+                      <Typography sx={{ color: "white", fontWeight: "bold",fontSize: { xs: "10px", md: "11px", lg: "13px" } }}>
                         Friendly
                       </Typography>
                     </Box>
@@ -304,14 +312,14 @@ const index = () => {
                         backgroundColor: "#56636c",
                       }}
                     >
-                      <Typography sx={{ color: "white", fontWeight: "bold", fontSize: "13px"  }}>
+                       <Typography sx={{ color: "white", fontWeight: "bold",fontSize: { xs: "10px", md: "11px", lg: "13px" } }}>
                         On-Time
                       </Typography>
                     </Box>
                   </Box>
                 </Box>
                 <Typography
-                  sx={{ color: "#5c6166", maxWidth: "230px", fontSize: "11px" }}
+                  sx={{ color: "#5c6166", maxWidth: {xs: "200px", lg: "230px" }, fontSize: "11px" }}
                 >
                   Amazing service. Delivery is on time and an amazing firendly
                   person. Good luck ir your future endeavours
@@ -321,7 +329,193 @@ const index = () => {
 
             {/* SECOND REVIEW */}
 
-            
+            <Box
+              sx={{
+                display: "flex",
+                color: "white",
+                minWidth: "315px",
+                alignItems: "center",
+              }}
+            >
+              <Box
+                sx={{
+                  width: "50px",
+                  height: "50px",
+                  border: "1px solid #ccc",
+                  borderRadius: "50%",
+                  overflow: "hidden",
+                }}
+              >
+                <Image
+                  src={"/banana.jpeg"}
+                  width={50}
+                  height={50}
+                  alt="logoIcon"
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                />
+              </Box>
+              <Box
+                sx={{
+                  px: "20px",
+                }}
+              >
+                <Typography sx={{ color: "#5c6166", fontWeight: "bold", fontSize: "11px" }}>
+                  Aaron Wilson
+                </Typography>
+                <Typography sx={{ color: "#5c6166" }}>
+                  {/* REVISI BINTANG */}
+                  ★★★★★
+                </Typography>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "row",
+                      gap: "10px",
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        border: "1px",
+                        borderRadius: "5%",
+                        backgroundColor: "#56636c",
+                      }}
+                    >
+                      <Typography sx={{ color: "white", fontWeight: "bold",fontSize: { xs: "10px", md: "11px", lg: "13px" } }}>
+                        Quality Work
+                      </Typography>
+                    </Box>
+                    <Box
+                      sx={{
+                        border: "1px",
+                        borderRadius: "5%",
+                        backgroundColor: "#56636c",
+                      }}
+                    >
+                      <Typography sx={{ color: "white", fontWeight: "bold",fontSize: { xs: "10px", md: "11px", lg: "13px" } }}>
+                        Friendly
+                      </Typography>
+                    </Box>
+                    <Box
+                      sx={{
+                        border: "1px",
+                        borderRadius: "5%",
+                        backgroundColor: "#56636c",
+                      }}
+                    >
+                       <Typography sx={{ color: "white", fontWeight: "bold",fontSize: { xs: "10px", md: "11px", lg: "13px" } }}>
+                        On-Time
+                      </Typography>
+                    </Box>
+                  </Box>
+                </Box>
+                <Typography
+                  sx={{ color: "#5c6166", maxWidth: {xs: "200px", lg: "230px" }, fontSize: "11px" }}
+                >
+                  Amazing service. Delivery is on time and an amazing firendly
+                  person. Good luck ir your future endeavours
+                </Typography>
+              </Box>
+            </Box>
+
+            <Box
+              sx={{
+                display: "flex",
+                color: "white",
+                minWidth: "315px",
+                alignItems: "center",
+              }}
+            >
+              <Box
+                sx={{
+                  width: "50px",
+                  height: "50px",
+                  border: "1px solid #ccc",
+                  borderRadius: "50%",
+                  overflow: "hidden",
+                }}
+              >
+                <Image
+                  src={"/banana.jpeg"}
+                  width={50}
+                  height={50}
+                  alt="logoIcon"
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                />
+              </Box>
+              <Box
+                sx={{
+                  px: "20px",
+                }}
+              >
+                <Typography sx={{ color: "#5c6166", fontWeight: "bold", fontSize: "11px" }}>
+                  Aaron Wilson
+                </Typography>
+                <Typography sx={{ color: "#5c6166" }}>
+                  {/* REVISI BINTANG */}
+                  ★★★★★
+                </Typography>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "row",
+                      gap: "10px",
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        border: "1px",
+                        borderRadius: "5%",
+                        backgroundColor: "#56636c",
+                      }}
+                    >
+                      <Typography sx={{ color: "white", fontWeight: "bold",fontSize: { xs: "10px", md: "11px", lg: "13px" } }}>
+                        Quality Work
+                      </Typography>
+                    </Box>
+                    <Box
+                      sx={{
+                        border: "1px",
+                        borderRadius: "5%",
+                        backgroundColor: "#56636c",
+                      }}
+                    >
+                      <Typography sx={{ color: "white", fontWeight: "bold",fontSize: { xs: "10px", md: "11px", lg: "13px" } }}>
+                        Friendly
+                      </Typography>
+                    </Box>
+                    <Box
+                      sx={{
+                        border: "1px",
+                        borderRadius: "5%",
+                        backgroundColor: "#56636c",
+                      }}
+                    >
+                       <Typography sx={{ color: "white", fontWeight: "bold",fontSize: { xs: "10px", md: "11px", lg: "13px" } }}>
+                        On-Time
+                      </Typography>
+                    </Box>
+                  </Box>
+                </Box>
+                <Typography
+                  sx={{ color: "#5c6166", maxWidth: {xs: "200px", lg: "230px" }, fontSize: "11px" }}
+                >
+                  Amazing service. Delivery is on time and an amazing firendly
+                  person. Good luck ir your future endeavours
+                </Typography>
+              </Box>
+            </Box>
           </Box>
         </Box>
         <Box
