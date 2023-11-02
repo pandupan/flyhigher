@@ -140,7 +140,7 @@ const index = () => {
           >
             <Box
               sx={{
-                width: {xs: "100px", md: "120px",lg: "150px"},
+                width: {xs: "100px", md: "120px", lg: "150px"},
                 height: {xs: "100px", md: "120px", lg:"150px"},
                 border: "1px solid #ccc",
                 borderRadius: "10%",
