@@ -27,7 +27,8 @@ import PersonSearchIcon from "@mui/icons-material/PersonSearch"
 import DescriptionIcon from "@mui/icons-material/Description"
 import EditIcon from "@mui/icons-material/Edit"
 import SaveIcon from '@mui/icons-material/Save';
-import AddIcon from '@mui/icons-material/Add';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import BuildIcon from '@mui/icons-material/Build';
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -130,7 +131,7 @@ export default function Jastip() {
                 borderRadius: '8px',
                 px: '10px',
                 py: '5px',
-                width: '280px',
+                width: {xs:'270px', md:'280px'},
               }}
             >
               <CreateIcon sx={{ fontSize: '20px' }}/>
@@ -144,7 +145,7 @@ export default function Jastip() {
                 borderRadius: '8px',
                 px: '10px',
                 py: '5px',
-                width: '280px',
+                width: {xs:'270px', md:'280px'},
                 flexDirection: 'column',
                 textAlign: 'center',
               }}
@@ -245,33 +246,35 @@ export default function Jastip() {
         className={`${styles.main} ${inter.className}`}
         sx={{overflow: 'hidden'}}
       >
-        {/* Daftar Jasa */}
+        {/* Daftar Product */}
           <Box sx={{ maxWidth: "100%", width: "100%", p: "10px" }}>
             <Box
               sx={{
                 display: "flex",
                 color: "white",
                 width: "100%",
-                paddingBottom: "10px",
+                paddingBottom: "10px"
               }}
             >
-              <InterestsIcon sx={{ height: "32px", margin: "0 8px 0 0" }} />
-              <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                Daftar Jasa
-              </Typography>
+              <Box sx={{ display: "flex", alignItems: "center", gap : "3px" }}>
+                <BuildIcon sx={{ height: "32px", margin: "0 8px 0 0" }} />
+                <Typography variant="h6" sx={{ fontWeight: "bold", fontSize: { xs: "18px", md: "20px" } }}>
+                  Daftar Jasa
+                </Typography>
+              </Box>
               <Button
                 variant="contained"
                 sx={{
                   mx: "20px",
-                  bgcolor: "#37bf28",
+                  bgcolor: "#39d2c0",
                   fontWeight: "bold",
-                  px: "20px",
+                  px: {xs:"15px", md:"20px"},
                   borderRadius: "8px",
-                  gap: "10px",
+                  gap: {xs:"2px", md:"10px"},
                 }}
               >
-                <AddIcon />
-                Jasa
+                <AddCircleIcon sx={{fontSize:"20px", mx : "2px"}} />
+                Product
               </Button>
             </Box>
 
@@ -333,6 +336,8 @@ export default function Jastip() {
               ))}
             </Box>
           </Box>
+
+
         {/* Why me TEXT FIELD */}
         <Box>
           <Box
