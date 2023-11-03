@@ -1,51 +1,339 @@
-import { useState } from "react"
-import Image from "next/image"
 import { Inter } from "next/font/google"
 import { HeadMeta } from "@/components/meta/HeadMeta"
-import { MainLayout } from "@/components/layouts/MainLayout"
+import Image from "next/image"
 import styles from "@/styles/Home.module.css"
-import ButtonCategoryService from "@/components/ButtonCategoryService"
-import FreelanceCard from "@/components/cards/FreelanceCard"
-import { FreelanceProduct } from "@/types"
+import {
+  Typography,
+  Box,
+  useMediaQuery,
+  Button,
+  useTheme,
+  Container,
+  TextField,
+} from "@mui/material"
+import PersonIcon from '@mui/icons-material/Person';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import InterestsIcon from '@mui/icons-material/Interests';
+import CreateIcon from '@mui/icons-material/Create';
+import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
+import InfoIcon from '@mui/icons-material/Info';
+import StarIcon from '@mui/icons-material/Star';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew';
+import ArticleIcon from '@mui/icons-material/Article';
+import RateReviewIcon from '@mui/icons-material/RateReview';
 import { Person, PersonPinSharp } from "@mui/icons-material"
 import PersonSearchIcon from "@mui/icons-material/PersonSearch"
 import DescriptionIcon from "@mui/icons-material/Description"
 import EditIcon from "@mui/icons-material/Edit"
-import StarIcon from "@mui/icons-material/Star"
-import RateReviewIcon from "@mui/icons-material/RateReview"
 import SaveIcon from '@mui/icons-material/Save';
-import {
-  Typography,
-  Box,
-  Button,
-  useMediaQuery,
-  useTheme,
-  Grid,
-  FormControl,
-  MenuItem,
-  Select,
-  TextField,
-  Container,
-} from "@mui/material"
-import { KeyboardArrowDown } from "@mui/icons-material"
-import {
-  useFetchCategoriesFreelanceOnline,
-  useFetchCategoriesFreelanceOffline,
-} from "../../hooks"
-import ListSection from "@/components/shared/ListSection/ListSection"
-import { useGetProducts } from "@/hooks/useProducts"
-import pickBy from "lodash/pickBy"
-import HomepageFilter from "@/components/dropdown/HomepageFilter"
-import PostServiceButton from "@/components/buttons/PostServiceButton"
+import AddIcon from '@mui/icons-material/Add';
 
 const inter = Inter({ subsets: ["latin"] })
 
-const index = () => {
+export default function Jastip() {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
     <>
-      <Container className={`${styles.main} ${inter.className}`}>
-        {/* Why me TEXT FIELD */}
+      <Container 
+        className={`${styles.main} ${inter.className}`}
+        sx={{overflow: 'hidden'}}
+      >
+          <HeadMeta />
+          {isMobile ? (
+            // Mobile Header
+              <Box
+                component="section"
+                sx={{
+                  display: 'flex',
+                  justifyItems: 'center',
+                  justifyContent: 'space-between',
+                  py: '10px',
+                }}
+              >
+                <Image src={'/img/logo.png'} width={50} height={50} alt="logoIcon" />
+                <Typography
+                  variant="h6"
+                  sx={{
+                    textAlign: 'center',
+                    fontWeight: '800',
+                    display: 'flex',
+                    alignItems: 'center',
+                  }}
+                >
+                  Post Your Services
+                </Typography>
+                <PersonIcon sx={{ fontSize: '50px' }} />
+              </Box>
+          ) : (
+          // Desktop Header
+          <Box
+            component="section"
+            sx={{
+              display: 'flex',
+              justifyItems: 'center',
+              py: '10px',
+              gap: '30px',
+            }}
+          >
+            <KeyboardBackspaceIcon sx={{ fontSize: '30px' }} />
+            <Typography
+              variant="h6"
+              sx={{
+                textAlign: 'center',
+                fontWeight: '800',
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              Post Your Services
+            </Typography>
+          </Box>
+          )}
 
+          {/* Freelance Menu */}
+          <Box sx={{ display: 'flex', gap: '10px', flexDirection: 'column', mx: {xs:'0', md:'auto'}}}>
+            <Box sx={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
+              <Box 
+                sx={{ 
+                  display: 'flex', 
+                  justifyContent: 'center', 
+                  gap: '10px',
+                  px: '10px',
+                  py: '5px', 
+                }}>
+                  <PersonIcon sx={{ fontSize: '20px' }}/>
+                  <Typography sx={{ fontWeight:'800' }}>Freelance</Typography>
+              </Box>
+              <Box 
+                sx={{ 
+                  display: 'flex', 
+                  justifyContent: 'center', 
+                  gap: '10px', 
+                  bgcolor: '#262626',
+                  borderRadius: '8px',
+                  px: '10px',
+                  py: '5px',
+                }}>
+                  <InterestsIcon sx={{ fontSize: '20px' }}/>
+                  <Typography sx={{ fontWeight:'300' }}>Pilih Kategori</Typography>
+              </Box>
+            </Box>
+            <Box 
+              sx={{ 
+                display: 'flex', 
+                mx: 'auto', 
+                gap: '10px', 
+                bgcolor: '#262626',
+                borderRadius: '8px',
+                px: '10px',
+                py: '5px',
+                width: '280px',
+              }}
+            >
+              <CreateIcon sx={{ fontSize: '20px' }}/>
+              <Typography sx={{ fontWeight:'300' }}>Isi Nama Jasa Anda</Typography>
+            </Box>
+            <Box 
+              sx={{ 
+                display: 'flex', 
+                mx: 'auto',  
+                bgcolor: '#262626',
+                borderRadius: '8px',
+                px: '10px',
+                py: '5px',
+                width: '280px',
+                flexDirection: 'column',
+                textAlign: 'center',
+              }}
+            >
+              <PhotoCameraIcon sx={{ fontSize: '180px',mx: 'auto', py: '20px' }}/>
+              <Typography sx={{ fontWeight:'300', pb: '20px' }}>Upload Foto Jasa dan Portfolio Anda Disini</Typography>
+            </Box>
+            
+            <Box>
+              <Box sx={{ display: 'flex', justifyItems: 'center', justifyContent: 'center', gap: '10px', py: '10px', }}>
+                <Box>
+                  <Box sx={{ borderRadius: '50%', overflow: 'hidden', width: 25, height: 25, position: 'relative' }}>
+                    <Image src={'/img/dummy_profile.jpg'} fill={true} alt="ProfileIcon" />
+                  </Box>
+                </Box>
+                <Typography sx={{ textAlign: 'center', fontWeight: '800', color: '#4a4a4a' }}>Kai Havertz</Typography>
+                <InfoIcon sx={{ fontSize: '25px', color: '#4a4a4a' }}/>
+              </Box>
+              <Box sx={{ display: 'flex', justifyItems: 'center', justifyContent: 'center', gap: '2px', color: '#4a4a4a', fontSize: '15px'}}>
+                <StarIcon/>
+                <StarIcon/>
+                <StarIcon/>
+                <StarIcon/>
+                <StarIcon/>
+                <Typography sx={{fontWeight: 'medium', px:'3px' }}>5.0</Typography>
+                <Typography sx={{fontWeight: 'medium', px:'3px' }}>(260 Reviews)</Typography>
+              </Box>
+            </Box>
+
+            <Box sx={{width:'700px', px: 'auto',}}>
+              <Box sx={{ display: 'flex', justifyItems: 'center', justifyContent: {xs:'start', md: 'space-between'}, gap: '10px', py: '10px'}}>
+                <Box 
+                  sx={{ 
+                    display: 'flex', 
+                    justifyContent: 'center',
+                    justifyItems: 'center', 
+                    gap: '10px', 
+                    bgcolor: '#101013',
+                    borderRadius: '8px',
+                    px: '10px',
+                    py: '5px',
+                  }}>
+                    <HelpOutlineIcon sx={{ fontSize: '20px' }}/>
+                    <Typography sx={{ fontWeight:'300', width:'100px', py:'2px' }}>Why Me</Typography>
+                </Box>
+                <Box 
+                  sx={{ 
+                    display: 'flex', 
+                    justifyContent: 'center',
+                    justifyItems: 'center', 
+                    gap: '10px', 
+                    bgcolor: '#101013',
+                    borderRadius: '8px',
+                    px: {xs:'5px', md:'10px'},
+                    py: '5px',
+                  }}>
+                    <ArticleIcon sx={{ fontSize: '20px' }}/>
+                    <Typography sx={{ fontWeight:'300', width:'100px', py:'2px' }}>Description</Typography>
+                </Box>
+              </Box>
+
+              <Box sx={{ display: 'flex', justifyItems: 'center', justifyContent: {xs:'start', md: 'space-between'}, gap: '10px', py: '10px'}}>
+                <Box 
+                  sx={{ 
+                    display: 'flex', 
+                    justifyContent: 'center',
+                    justifyItems: 'center', 
+                    gap: '10px', 
+                    bgcolor: '#101013',
+                    borderRadius: '8px',
+                    px: {xs:'5px', md:'10px'},
+                    py: '5px',
+                  }}>
+                    <AccessibilityNewIcon sx={{ fontSize: '20px' }}/>
+                    <Typography sx={{ fontWeight:'300', width:'100px', py:'2px' }}>About Seller</Typography>
+                </Box>
+                <Box 
+                  sx={{ 
+                    display: 'flex', 
+                    justifyContent: 'center',
+                    justifyItems: 'center', 
+                    gap: '10px', 
+                    bgcolor: '#101013',
+                    borderRadius: '8px',
+                    px: '10px',
+                    py: '5px',
+                  }}>
+                    <RateReviewIcon sx={{ fontSize: '20px' }}/>
+                    <Typography sx={{ fontWeight:'300', width:'100px', py:'2px' }}>Review</Typography>
+                </Box>
+              </Box>
+
+          </Box>
+
+        </Box>
+      </Container>
+      <Container 
+        className={`${styles.main} ${inter.className}`}
+        sx={{overflow: 'hidden'}}
+      >
+        {/* Daftar Jasa */}
+          <Box sx={{ maxWidth: "100%", width: "100%", p: "10px" }}>
+            <Box
+              sx={{
+                display: "flex",
+                color: "white",
+                width: "100%",
+                paddingBottom: "10px",
+              }}
+            >
+              <InterestsIcon sx={{ height: "32px", margin: "0 8px 0 0" }} />
+              <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                Daftar Jasa
+              </Typography>
+              <Button
+                variant="contained"
+                sx={{
+                  mx: "20px",
+                  bgcolor: "#37bf28",
+                  fontWeight: "bold",
+                  px: "20px",
+                  borderRadius: "8px",
+                  gap: "10px",
+                }}
+              >
+                <AddIcon />
+                Jasa
+              </Button>
+            </Box>
+
+            {/* Box picture */}
+            <Box sx={{ display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center', justifyContent:{ xs:'center', md:'start'} }}>
+              {[...Array(10)].map((_, index) => (
+                <Box key={index} sx={{ display: 'flex', flexDirection: 'column', gap: '10px', my: '10px' }}>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      mx: 'auto',
+                      bgcolor: '#262626',
+                      borderRadius: '12px',
+                      px: '10px',
+                      py: '5px',
+                      width: '150px',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <PhotoCameraIcon sx={{ fontSize: '120px', mx: 'auto', py: '20px' }} />
+                  </Box>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      mx: 'auto',
+                      gap: '10px',
+                      bgcolor: '#262626',
+                      borderRadius: '8px',
+                      px: '10px',
+                      py: '5px',
+                      width: '150px',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      textAlign: 'center',
+                    }}
+                  >
+                    <CreateIcon sx={{ fontSize: '20px' }} />
+                    <Typography sx={{ fontWeight: 'bold', fontSize: '10px', mt: '2px' }}>Isi Nama Jasa Anda</Typography>
+                  </Box>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      mx: 'auto',
+                      gap: '10px',
+                      bgcolor: '#262626',
+                      borderRadius: '8px',
+                      px: '10px',
+                      py: '5px',
+                      width: '150px',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      textAlign: 'center',
+                    }}
+                  >
+                    <Typography sx={{ fontWeight: 'bold', fontSize: '10px', mt: '2px' }}>Rp. 1000.000</Typography>
+                  </Box>
+                </Box>
+              ))}
+            </Box>
+          </Box>
+        {/* Why me TEXT FIELD */}
         <Box>
           <Box
             sx={{
@@ -540,5 +828,3 @@ const index = () => {
     </>
   )
 }
-
-export default index
